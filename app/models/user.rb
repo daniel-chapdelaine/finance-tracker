@@ -26,4 +26,12 @@ class User < ApplicationRecord
     return "#{first_name} #{last_name}" if first_name || last_name 
     "Anonymous"
   end
+
+  def friend_already_followed?(friend_id)
+    friends.where(id: friend_id).exists?
+  end
+
+  def can_follow_friend?(friend_id)
+    !friend_already_followed?(friend_id)
+  end
 end

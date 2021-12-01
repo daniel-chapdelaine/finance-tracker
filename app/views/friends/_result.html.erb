@@ -1,0 +1,14 @@
+<% if @friend %>
+  <div class="card card-header results-block">
+    <strong>Email: </strong> <%= @friend.email %>
+    <strong>Name: </strong> <%= @friend.full_name %>
+
+    <% if current_user.can_follow_friend?(@friend.id) %>
+      <%= link_to 'follow', friendships_path(user: current_user, friend: @friend),
+                                      class: "btn btn-xs btn-success", method: :post %>
+    <% else %>
+      <%= link_to 'Unfollow', friendship_path(@friend), method: :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-sm btn-warning' %>    
+    <% end %>  
+                                       
+  </div>
+<% end %>
