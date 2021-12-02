@@ -5,7 +5,7 @@
   <%= form_tag search_friends_path, remote: true, method: :get do %>
     <div class="form-group row" >
       <div class="col-sm-9">
-        <%= text_field_tag :email, params[:email], placeholder: "Friend email", autofocus: true, class: "form-control form-control-large" %>
+        <%= text_field_tag :search_string, params[:search_string], placeholder: "Friend email", autofocus: true, class: "form-control form-control-large" %>
       </div>
       <div class="col-sm-3">
         <%= button_tag type: :submit, class: "btn btn-success" do %>

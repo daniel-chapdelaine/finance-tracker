@@ -8,9 +8,11 @@ class UsersController < ApplicationController
   end
 
   def search
-    if  params[:email].present?
-      @friend = User.where(email: params[:email]).first
-      if @friend
+    
+    if  params[:search_string].present?
+      @search_results = User.search(params[:search_string])
+      @search_results = current_user.except_current_user(@search_results)
+      if @search_results
         respond_to do |format|
           format.js { render partial: 'friends/result'}
         end
